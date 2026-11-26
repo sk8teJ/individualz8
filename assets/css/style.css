@@ -212,7 +212,7 @@ button{color:inherit}
    Crop the lower half for AFTER and the upper half for BEFORE. */
 .compare>img{
   left:0;
-  top:-50%;
+  top:-100%;
   width:100%;
   max-width:none;
   height:200%;
