@@ -206,3 +206,37 @@ button{color:inherit}
   object-fit:cover;
   object-position:center;
 }
+
+
+/* Comparison source: two vertically stacked photos of the same full vehicle/profile.
+   Crop the lower half for AFTER and the upper half for BEFORE. */
+.compare>img{
+  left:0;
+  top:-50%;
+  width:100%;
+  max-width:none;
+  height:200%;
+  object-fit:fill;
+  object-position:center;
+}
+.compare-before{
+  width:100%;
+  clip-path:inset(0 calc(100% - var(--split)) 0 0);
+}
+.compare-before img{
+  left:0;
+  top:0;
+  width:100%;
+  max-width:none;
+  height:200%;
+  object-fit:fill;
+  object-position:center;
+}
+
+/* High-contrast typography for service cards on light backgrounds. */
+.card{color:#171715;background:#fff}
+.card-body{color:#171715}
+.card-kicker{color:#76621c}
+.card h3{color:#171715}
+.card p{color:#555650}
+.card .text-link{color:#171715}
