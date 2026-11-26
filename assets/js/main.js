@@ -1,6 +1,17 @@
-const menu=document.querySelector('.menu-toggle');const links=document.querySelector('.navlinks');menu?.addEventListener('click',()=>{links.classList.toggle('open');menu.setAttribute('aria-expanded',links.classList.contains('open'))});
-const modal=document.querySelector('.modal');document.querySelectorAll('[data-open-modal]').forEach(b=>b.addEventListener('click',()=>{modal?.classList.add('open');document.body.style.overflow='hidden'}));document.querySelectorAll('[data-close-modal]').forEach(b=>b.addEventListener('click',closeModal));modal?.addEventListener('click',e=>{if(e.target===modal)closeModal()});function closeModal(){modal?.classList.remove('open');document.body.style.overflow=''}
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
-const track=document.querySelector('.carousel-track');if(track){let index=0;const slides=[...track.children];const move=n=>{index=(n+slides.length)%slides.length;track.style.transform='translateX(-'+index*100+'%)'};document.querySelector('[data-prev]')?.addEventListener('click',()=>move(index-1));document.querySelector('[data-next]')?.addEventListener('click',()=>move(index+1));}
-document.querySelectorAll('[data-lead-form]').forEach(form=>form.addEventListener('submit',e=>{e.preventDefault();const success=form.querySelector('.form-success');if(success)success.style.display='block';form.reset()}));
-document.querySelectorAll('[data-year]').forEach(el=>el.textContent=new Date().getFullYear());
+const menu=document.querySelector('.menu-toggle');
+const links=document.querySelector('.navlinks');
+menu?.addEventListener('click',()=>{links?.classList.toggle('open');menu.setAttribute('aria-expanded',String(links?.classList.contains('open')));});
+const modal=document.querySelector('.modal');
+document.querySelectorAll('[data-open-modal]').forEach(button=>button.addEventListener('click',()=>{modal?.classList.add('open');document.body.style.overflow='hidden';}));
+document.querySelectorAll('[data-close-modal]').forEach(button=>button.addEventListener('click',closeModal));
+modal?.addEventListener('click',event=>{if(event.target===modal)closeModal();});
+function closeModal(){modal?.classList.remove('open');document.body.style.overflow='';}
+document.addEventListener('keydown',event=>{if(event.key==='Escape')closeModal();});
+document.querySelectorAll('[data-compare]').forEach(compare=>{
+ const range=compare.querySelector('.compare-range');
+ const update=()=>compare.style.setProperty('--split',range.value+'%');
+ range?.addEventListener('input',update);
+ update();
+});
+document.querySelectorAll('[data-lead-form]').forEach(form=>form.addEventListener('submit',event=>{event.preventDefault();const success=form.querySelector('.form-success');if(success)success.style.display='block';form.reset();}));
+document.querySelectorAll('[data-year]').forEach(element=>element.textContent=new Date().getFullYear());
