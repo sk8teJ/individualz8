@@ -9,6 +9,10 @@
   object-fit:cover;
   object-position:center;
 }
+.compare-before{
+  width:100%;
+  clip-path:inset(0 calc(100% - var(--split)) 0 0);
+}
 .compare-before img{
   left:0;
   width:200%;
